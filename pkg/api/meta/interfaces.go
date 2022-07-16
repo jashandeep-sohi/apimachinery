@@ -141,3 +141,10 @@ type ResettableRESTMapper interface {
 	RESTMapper
 	Reset()
 }
+
+// ResettableGroupRESTMapper is a ResettableRESTMapper which is capable of resetting
+// a single API group from discovery.
+type ResettableGroupRESTMapper interface {
+	ResettableRESTMapper
+	ResetGroup(group string)
+}

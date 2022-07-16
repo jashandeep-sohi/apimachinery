@@ -527,3 +527,14 @@ func MaybeResetRESTMapper(mapper RESTMapper) {
 		m.Reset()
 	}
 }
+
+// MaybeResetGroupRESTMapper calls ResetGroup() on the mapper if it is a
+// ResettableGroupRESTMapper or Reset() on the mapper if it is a ResettableRESTMapper.
+func MaybeResetGroupRESTMapper(mapper RESTMapper, group string) {
+	switch m := mapper.(type) {
+	case ResettableGroupRESTMapper:
+		m.ResetGroup(group)
+	case ResettableRESTMapper:
+		m.Reset()
+	}
+}
